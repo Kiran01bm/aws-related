@@ -27,11 +27,12 @@ custom:
         topic: ${self:service}-${opt:stage}-alerts-alarm
         notifications:
           - protocol: email
-            endpoint: kvr2277@gmail.com
+            endpoint: INSERT_EMAIL
     alarms:
-      - functionErrors
       - functionThrottles
- 
+      - functionErrors
+      - functionInvocations
+      - functionDuration
 functions:
   sleeper:
     handler: handler.endpoint
