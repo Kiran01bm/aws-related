@@ -13,7 +13,7 @@ package:
 custom:
   notifications:
     - protocol: email
-      endpoint: kvr2277@gmail.com
+      endpoint: INSERT_EMAIL
 
 
   alerts:
