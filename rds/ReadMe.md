@@ -37,6 +37,12 @@ RDS in MultiAZ set-up creates Synchronous Replication between Primary/Master and
 
 Master DB and Read Replicas will have different End Points and AWS does not support front ending the DB end points with ELB so a possible option is to use HAProxy.
 
+You can even have Read Replicas of Read Replicas.
+
+You must have Automatic Backups to have a Read Replica.
+
+Each Read Replica has its own DNS end point and Read Replicas can be promoted as their Own DB's which breaks replication.
+
 ### Creating Read Replica
 1. When you create a Read Replica, you first specify an existing DB instance as the source. 
 2. Then Amazon RDS takes a snapshot of the source instance and creates a read-only instance from the snapshot. 
