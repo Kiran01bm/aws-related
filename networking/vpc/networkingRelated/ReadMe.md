@@ -158,12 +158,12 @@
 	
 	VPN Gateway - One per VPC and is on the AWS side that needs to be complimented by a VPN Gateway on the customers side. VPN Tunnel between the two gateways.
 	
-	Security:
+	### Security:
 		1. VPC Flow Logs - Capture in Cloudwatch logs. For Audit and can be used for Intelligent decission making
 		2. Subnet ACLs - Subnet level, Evaluates rules in the Order so if there is a deny it drops the packets and wont continue with the rest of the rules. If there are multiple ACLs it applies the Most Restrictive Deny Rule. 1st Layer od Defence for Inbound Traffic.
 		3. Security Groups - Instance level, If there are more than one matching rule in SG it applies the Most Permissive Rule. 1st layer of Defence. Evaluates all rules. If there is a deny and permit it permits the traffic. 1st Layer of Defence for Outbound Traffic.
 
-	Security Groups:
+	### Security Groups:
 		All InBound traffic is blocked by Default.
 		Default security group rules allow all outbound traffic from an instance.
 		You cannot have DENY rules. Only ALLOW rules are allowed.
@@ -177,13 +177,13 @@
 
 	When you use the wizard in the console to create a VPC with a gateway, the wizard automatically updates the route tables to use the gateway. If you’re using the command line tools or the API to set up your VPC, then you have to update the route tables yourself.
 
-	Limits:
+	### Limits:
 		Default number of VPCs per region is 5. This limit can be increased upon request. 	
 		Default number of subnets per VPC is 200. This limit can be increased upon request. 
 		Default number of Internet gateways per region is 5 and you can create as many internet gateways as your VPCs per region limit.
 		With regards to VPC, The default maximum number of virtual private gateways allowed per region - 5
 
-	VPC Peering:
+	### VPC Peering:
 		Can Peer across regions
 		Can Peer between VPCs in different accounts and in the same account
 		Peering is NOT Transitive but a Star configuration
@@ -202,19 +202,19 @@
 			Create one NAT gateway per AZ
 			NAT Gateways must be deployed in public subnets.
 
-	One To One Associations:
+	### One To One Associations:
 		VPC and Internetgateway association
 		VPC and SG association
 		Subnet is part of a VPC and hence inherently One to One
 		Subnets to ACL
 		Subnet and RouteTable association
 
-	ACL:
+	### ACL:
 		Default ACL - By default allows all Inbound and Outbound 
 		Custom ACL - By default blocks all Inbound and Outbound
 		Can Block IP addresses with ACLs and this cant be done with SGs as SGs do not support DENY rules.
 
-	Flow Logs can be created in the following levels:
+	### Flow Logs can be created in the following levels:
 		1. VPC
 		2. Subnet
 		3. NIC/ENI level
@@ -222,13 +222,13 @@
 		2 Options to send Flow Logs - Can be sent to Cloudwatch and S3
 		You can apply filters to the VPC flow logs - You can log Accepts, Rejects or Both
 
-	VPC Endpoints:
+	### VPC Endpoints:
 		In contrast to a NAT gateway, traffic between your VPC and the other service does not leave the Amazon network when using VPC endpoints.
 		2 Types:
 			1. VPC Interface Endpoints - Its an ENI with a Private IP which acts as an entry point to the traffic destined to the supported AWS services (a huge list). Attach an ENI to an EC2 Instance.
 			2. VPC Gateway Endpoints - Like NAT gateways and they are supported for S3 and DynamoDB
 
-	VPN Gateway:
+	### VPN Gateway:
 		The VPC has an attached virtual private gateway, and your remote network includes a customer gateway, which you must configure to enable the Site-to-Site VPN connection. You set up the routing so that any traffic from the VPC bound for your network is routed to the virtual private gateway.
 
 		When you create multiple Site-to-Site VPN connections to a single VPC, you can configure a second customer gateway to create a redundant connection to the same external location. You can also use it to create Site-to-Site VPN connections to multiple geographic locations.
