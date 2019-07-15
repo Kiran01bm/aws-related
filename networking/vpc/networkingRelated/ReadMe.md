@@ -1,6 +1,6 @@
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Networking Services and Content Delivery:
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# General Notes:
+
+## Networking Services and Content Delivery:
 1. Coudfront - Caching, DDoS protection
 	You can define TTL for the assets and when TTL expires CloudFront distribution resyncs the content from Origin ex: S3 bucket
 	You can invalidate the entire cloudfront distribution with a /* or invalidate specific content by specifying the path to the document ex: /assets/hourly/12.html
@@ -17,7 +17,7 @@ Networking Services and Content Delivery:
 
 6. API Gateway - Help deploy secure API services. Its a server less service
 
-Route53:
+## Route53:
 	If you purchase a Domain via AWS then a Hosted Zone will be automatically created after the Domain Purchase process is completed.
 
 	DNS Propogation can be checked with - https://www.whatsmydns.net
@@ -71,7 +71,7 @@ Route53:
 		You can send SNS notifications for failed Health Checks
 
 
-ELB:
+## ELB:
 	With ELB sticky sessions if the Instance becomes unhealthy the request is routed to another healthy instance.
 		2 types: Once ELB managed and another is Application Managed
 			1. Duration Based - Where ELB adds a Header named AWSELB if no cookie is present and route the traffic to an instance with least load. This header then gets used subsequently for stickiness.	
@@ -105,20 +105,20 @@ ELB:
 
 	To create an ELB you need atleast 2 Public Subnets
 
-Target Group: Target Groups link ELB to the Backend. ALB or NLB needs Target Group but CLB routes traffic back to EC2 instances directly.
+## Target Group: Target Groups link ELB to the Backend. ALB or NLB needs Target Group but CLB routes traffic back to EC2 instances directly.
 	Backends can be:
 		EC2 Instance
 		External IP - ELB can be used to Load Balance requests to systems outside of AWS
 		Lamda
 
-Classic Load Balancer:
+## Classic Load Balancer:
 	Layer 4 and Layer 7. Layer 7 support is limited Ex: It does not support websockets.
 	Does not need target group.
 	Cheaper in cost and lesser features.
 	Classic LB routes requests to backends with least load.
 	Sticky Sessions can be enabled to route traffic to a specific ec2 isntance.
 
-Application Load Balancer:
+## Application Load Balancer:
 	Layer 7 - HTTP, HTTPS, HTTP/2, Websockets etc
 	Load balancer deletion protection.
 	Supports Path based routing and Sticky Sessions.
@@ -130,7 +130,8 @@ Application Load Balancer:
 	Sitcky sessions can be enabled to route traffic to a specific target group i.e not to a specific ec2 instance.
 	Cross Zone Load balancing
 
-Network Load Balancer: Highest performance of the lot for the Load Balancers
+## Network Load Balancer: 
+        Highest performance of the lot for the Load Balancers
 	Layer 4. Supports websockets.
 	Load Balancer deletion protection.
 	Cannot do backend server encryption.
@@ -138,7 +139,7 @@ Network Load Balancer: Highest performance of the lot for the Load Balancers
 
 	Use Case: Create TargetGroup and use that as Traffic Input for AutoScaling Group and then create a NLB with backend as the Target Group created earlier. So, basically the Target Group is a link between NLB and AutoScaling group.
 
-VPC:
+## VPC:
 	When account is created - A Default VPC is created in each of the regions and a Default subnet in each Availability zones.
 
 	5 addresses in total - 1st 4 Addresses and the Last Address in the Subnet is reserved by AWS
@@ -245,7 +246,7 @@ VPC:
 
 		VPC should have an internet gateway attached to it. That way, you can establish a site-to-site VPN with the on-premise environment.
 
-CloudFront:
+## CloudFront:
 	Is not regional its a Global Service
 	Origin can be a:
 		 S3 bucket
@@ -270,7 +271,7 @@ CloudFront:
 	CloudFront Distribution
 	Amazon CloudFront can handle 10,000 requests per second
 
-API Gateway:
+## API Gateway:
 	Backend can be 
 		Lamda
 		EC2
@@ -279,7 +280,8 @@ API Gateway:
 	Is Serverless
 	Throttle - 10,000 RPS limit and Burst os 5000requests
 
-Elastic Network Interface is inside a Subnet which is inside a VPC and has a SG associated with it. This can be attached to the Elastic IP.
+## Elastic Network Interface:
+        Is part of a Subnet which is part of a VPC and has a SG associated with it. This can be attached to the Elastic IP.
 	ENI is AZ Scoped - It is associated with a Subnet which is inside a AZ which is inside a VPC and has a SG associated with it. 
 	EIP is VPC Scoped - It has PublicIP, PrivateIP (from a subnet), VPCId, PublicDNS, Attached to an EC2 instance, Attached to a NetworkInterface which can be a ENI
 
@@ -288,9 +290,4 @@ How is the Public IP address managed in an instance session via the instance GUI
 	The Public IP address is not managed on the instance: It is, instead, an alias applied as a network address translation of the Private IP address.
 
 The instance which has the Oldest Launch Config will terminate 1st
-	http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalin
-
-You have created a Direct Connect Link from your on premise data center to your Amazon VPC. The link is now active and routes are being advertised from the on-premise data center. You can connect to EC2 instances from your data center; however, you cannot connect to your on premise servers from your EC2 instances. Which of the following solutions would remedy this issue? (Choose 2)
-	Edit the VPC subnet route table, adding a route back to the on-premise data center.
-	Enable route propagation on your Virtual Private Gateway (VPG).
-	No need to do anything on the Customer Gateway (CGW).
+	http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScaling
