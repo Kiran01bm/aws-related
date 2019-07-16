@@ -172,4 +172,5 @@ For Production, Provisioned IOPS storage is a storage type that delivers predict
 
 ![limits](../images/rdslimits.png)
 
-
+## Read Replicas vs Multi-AZ
+![Read Replicas vs Multi-AZ](images/rds-multiaz-readreplica.png?raw=true "Read Replicas vs Multi-AZ")
