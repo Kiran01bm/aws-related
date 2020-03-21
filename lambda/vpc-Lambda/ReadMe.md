@@ -2,7 +2,11 @@
 
 1. By default, Lambda runs your functions in a secure VPC with access to AWS services (ex: Cognito, DynamoDB, SQS, SNS etc) and the Internet. The VPC is owned by Lambda and does not connect to your account's default VPC. 
 
-2. When you connect a function to a VPC in your account, it does not have access to the internet or AWS Services unless your VPC provides access i.e For Internet Access and Access to AWS Services (ex: Cognito, DynamoDB, SQS, SNS etc) - NAT GW and IGW. For access to services in your VPC ex: RDS or Elasticache its sufficient if your Lambda is just VPC enabled.
+2. When you connect a function to a VPC in your account, it does not have access to the internet or AWS Services unless your VPC provides access i.e For Internet Access and/or Access to AWS Services (ex: Cognito, DynamoDB i.e without Gateway Endpoint, SQS, SNS etc) - NAT GW and IGW. For access to services in your VPC ex: RDS or Elasticache or AWS services that are all available via private VPC Endpoint its sufficient if your Lambda is just VPC enabled.
+
+**Note:** 
+If the Lambda only needs access to resources in the VPC (e.g. an RDS database in a private subnet) and/or to AWS services that are all available via private VPC Endpoint then you don't need to route through NAT at all.
+The reason that a Lambda function cannot access the internet, even though the Lambda function is running inside a public subnet of a VPC, is that Lambda functions do not, and cannot, have public IP addresses. You cannot send traffic to the internet, via the VPC's Internet Gateway, unless you have a public IP. You would need to route through a NAT.
 
 3. Official statement from AWS - "Don’t put your Lambda function in a VPC unless you have to.."
 
