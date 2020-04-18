@@ -23,6 +23,10 @@
 ### Visibility Timeout
 1. Default is 30 seconds but can be increased up to 12 hours
 
+### SQS Delay Queues
+Postpone delivery of new messages to a Queue for a number of seconds. Default delay is 0 seconds but this can be upto 900 seconds.
+Ex: Delay order completion notification to allow for order processing jobs to complete.
+
 ### Short Polling
 With short polling, the ReceiveMessage request queries **only a subset of the servers** (based on a weighted random distribution) to find messages that are available to include in the response. Amazon SQS sends the response right away, even if the query found no messages.
 
