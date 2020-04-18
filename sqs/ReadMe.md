@@ -1,6 +1,7 @@
-SQS is Distributed Queue Service which provides quick and reliable message exchange solution. Message consumption from SQS is Pull Based and messages can be of maximum 256kb of text in size.
-
-SQS is also used as a trigger for EC2 autoscaling ie Scaleout when number of messages in SQS is more and ScaleIn when number of messages in SQS is low.
+1. SQS is Distributed Queue Service which provides quick and reliable message exchange solution. 
+2. Message consumption from SQS is Pull Based.
+3. Messages can be of maximum 256kb of text in size.
+4. SQS is also used as a trigger for EC2 autoscaling ie Scaleout when number of messages in SQS is more and ScaleIn when number of messages in SQS is low.
 
 ### Queue Types
 1. Standard
@@ -40,7 +41,7 @@ When the wait time for the ReceiveMessage API action is greater than 0, long pol
 
 With long polling, the ReceiveMessage request queries **all of the servers for messages**. Amazon SQS sends the response after it collects the maximum number of messages for the response, or when the ReceiveMessage polling wait time expires.
 
-Long polling offers the following benefits:
+**Long polling offers the following benefits:**
 
 1. Eliminate empty responses by allowing Amazon SQS to wait until a message is available in a queue before sending a response. Unless the connection times out, the response to the ReceiveMessage request contains at least one of the available messages, up to the maximum number of messages specified in the ReceiveMessage action.
 
