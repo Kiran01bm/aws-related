@@ -13,3 +13,19 @@
 5. GetSessionToken—Temporary Credentials for Users in Untrusted Environments
 
 ![Compare STS API Options](images/stsapicompare.png)
+
+### Revoking Temporary Security Creds associated with a IAM Role
+IAM --> Select IAM Role --> Revoke Active Sessions --> IAM now attaches AWSRevokeOlderSessions policy for the IAM Role in question (The policy denies all access to users who assumed the role before the moment you chose Revoke active sessions.).
+
+### Denying Access to Credentials created by:
+1. AssumeRole
+2. AssumeRoleWithSAML
+3. AssumeRoleWithWebIdentity
+4. GetFederationToken
+5. GetSessionToken
+
+To change or remove the permissions assigned to the temporary security credentials obtained by calling the API operations above - 
+1. you edit or delete the policies that are attached to the IAM user whose credentials were used to call..
+2. you edit or delete the role permission policy that defines the permissions for the assumed role
+
+The temporary security credentials obtained by calling the API operations above can never have more permissions than those defined in the permissions policy of the assumed role or the IAM user that was used to generate the credentials and the permissions assigned to temporary security credentials are evaluated each time they are used to make an AWS request. It is important to note that when you edit or delete the permissions of an IAM user/Role, the changes affect the IAM user/Role as well as all temporary security credentials created by that user/Role.
