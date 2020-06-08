@@ -12,4 +12,4 @@
 4. GetFederationToken—Federation Through a Custom Identity Broker
 5. GetSessionToken—Temporary Credentials for Users in Untrusted Environments
 
-[Compare STS API Options](images/stsapicompare.png)
+![Compare STS API Options](images/stsapicompare.png)
