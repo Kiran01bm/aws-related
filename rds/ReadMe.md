@@ -87,7 +87,7 @@ Creating this DB snapshot on a Single-AZ DB instance results in a brief I/O susp
 
 If you have automated DB snapshots that you want to delete **without deleting the DB instance**, change the backup retention period for the DB instance to 0. The automated snapshots are deleted when the change is applied. You can apply the change immediately if you don't want to wait until the next maintenance period. After the change is complete, you can then re-enable automatic backups by setting the backup retention period to a number greater than 0. 
 
-##Restore:
+## Restore
 When you restore from a DB snapshot data a new DB instance is created ie you cannot restore into an existing DB instance.
 	
 When you restore only the default Parameter Groups and Security Groups are attached. You need to attach any custom Property Groups and Security Groups as soon as the DB is restored.
@@ -122,7 +122,7 @@ There will also be some limitations on the types of queries that can be made acr
 
 You can copy a snapshot that has been encrypted using an AWS KMS encryption key. If you copy an encrypted snapshot, the copy of the snapshot must also be encrypted. If you copy an encrypted snapshot within the same AWS Region, you can encrypt the copy with the same KMS encryption key as the original snapshot, or you can specify a different KMS encryption key. If you copy an encrypted snapshot across regions, you can't use the same KMS encryption key for the copy as used for the source snapshot, because KMS keys are region-specific. Instead, you must specify a KMS key valid in the destination AWS Region.
 
-You can also encrypt a copy of an unencrypted snapshot. This way, you can quickly add encryption to a previously unencrypted DB instance. That is, you can create a snapshot of your DB instance when you are ready to encrypt it, and then create a copy of that snapshot and specify a KMS encryption key to encrypt that snapshot copy. You can then restore an encrypted DB instance from the encrypted snapshot. - ** Same as encrypting an enencrypted EBS snapshot **
+You can also encrypt a copy of an unencrypted snapshot. This way, you can quickly add encryption to a previously unencrypted DB instance. That is, you can create a snapshot of your DB instance when you are ready to encrypt it, and then create a copy of that snapshot and specify a KMS encryption key to encrypt that snapshot copy. You can then restore an encrypted DB instance from the encrypted snapshot. **Same as encrypting an enencrypted EBS snapshot**
 
 ## Read Replicas
 Amazon RDS uses the MariaDB, MySQL, Oracle, and PostgreSQL DB engines' built-in replication functionality to create a special type of DB instance called a Read Replica from a source DB instance. 
@@ -148,7 +148,7 @@ Every DB instance has a **weekly maintenance window** during which any system ch
 
 The 30-minute maintenance window is selected at random from an 8-hour block of time per region. If you don't specify a preferred maintenance window when you create the DB instance, then Amazon RDS assigns a 30-minute maintenance window on a randomly selected day of the week.
 
-## DB Engine Version Uograde
+## DB Engine Version Upgrade
 1. Major Version Upgrades - you must manually modify the DB engine version through the AWS Management Console, AWS CLI, or RDS API. In general, a major engine version upgrade can introduce changes that are not compatible with existing applications
 2. Minor Version Upgrades - you can manually modify the engine version, or you can choose to enable auto minor version upgrades. In contrast, a minor version upgrade includes only changes that are backward-compatible with existing applications.
 
@@ -174,3 +174,6 @@ For Production, Provisioned IOPS storage is a storage type that delivers predict
 
 ## Read Replicas vs Multi-AZ
 ![Read Replicas vs Multi-AZ](images/rds-multiaz-readreplica.png?raw=true "Read Replicas vs Multi-AZ")
+
+## RDS on VMWare
+![RDS on VMWare](images/rds-on-vmware.png)
