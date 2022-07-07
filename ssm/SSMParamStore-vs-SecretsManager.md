@@ -1,5 +1,7 @@
 ## SSM Paramater Store vs Secrets Manager Features
 
+![Diff Tabular Format](./images/ssm-vs-paramstore.png)
+
 ## Commonalities:
 1. Encryption/Decryption for both Services are Integrated with AWS KMS.
 ```
