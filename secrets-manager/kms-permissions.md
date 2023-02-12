@@ -8,3 +8,5 @@
 3. To update the secret, the user must have both `kms:Decrypt` and `kms:GenerateDataKey` permission granted in **either an IAM policy or a key policy.**
 
 4. To allow the KMS key to be used only for requests that originate in Secrets Manager, you can use the kms:ViaService condition key with the secretsmanager.<Region>.amazonaws.com value.
+
+Ref: https://docs.aws.amazon.com/secretsmanager/latest/userguide/security-encryption.html#security-encryption-authz

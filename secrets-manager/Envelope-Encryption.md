@@ -10,9 +10,7 @@ You can even encrypt the data encryption key under another encryption key, and e
 
 > AWS KMS helps you to protect your encryption keys by storing and managing them securely. Root keys stored in AWS KMS, known as AWS KMS keys, never leave the AWS KMS FIPS validated hardware security modules unencrypted. To use a KMS key, you must call AWS KMS.
 
-
 ### Benefits of Envelope Encryption
-
 
 #### Protecting data keys
 
